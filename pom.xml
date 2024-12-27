@@ -13,6 +13,8 @@
         <module>core/common</module>
         <module>core/domain</module>
         <module>core/input-port</module>
+        <module>core/query-model</module>
+        <module>core/output-port</module>
     </modules>
 
     <properties>
