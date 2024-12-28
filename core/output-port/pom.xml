@@ -17,13 +17,13 @@
         <dependency>
             <groupId>be.avidoo</groupId>
             <artifactId>common</artifactId>
-            <version>${project.parent.version}</version>
+            <version>${project.version}</version>
         </dependency>
 
         <dependency>
             <groupId>be.avidoo</groupId>
             <artifactId>query-model</artifactId>
-            <version>${project.parent.version}</version>
+            <version>${project.version}</version>
         </dependency>
     </dependencies>
 

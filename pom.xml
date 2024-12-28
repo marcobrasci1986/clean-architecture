@@ -33,6 +33,8 @@
         <module>core/use-case</module>
 
         <module>input-adapter/rest</module>
+
+        <module>application</module>
     </modules>
 
 
@@ -52,7 +54,6 @@
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
         </dependency>
-
 
     </dependencies>
 
