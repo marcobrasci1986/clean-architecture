@@ -32,7 +32,7 @@ public class BaseDomainEntity<T extends EntityId> {
         this.datumLaatsteWijziging = datumWijziging;
     }
 
-    protected T getId() {
+    public T getId() {
         return id;
     }
 

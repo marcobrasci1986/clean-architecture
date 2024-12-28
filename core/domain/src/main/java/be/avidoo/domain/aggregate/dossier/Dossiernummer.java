@@ -5,7 +5,7 @@ public class Dossiernummer {
         return new Dossiernummer(value);
     }
 
-    private String value;
+    private final String value;
 
     public Dossiernummer(String value) {
         this.value = value;
