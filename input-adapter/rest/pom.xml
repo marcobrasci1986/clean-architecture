@@ -39,6 +39,12 @@
 
         <dependency>
             <groupId>be.avidoo</groupId>
+            <artifactId>use-case</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>be.avidoo</groupId>
             <artifactId>input-port</artifactId>
             <version>${project.version}</version>
         </dependency>

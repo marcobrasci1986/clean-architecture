@@ -1,6 +1,5 @@
 package be.avidoo.core.common.command;
 
-
 import be.avidoo.core.common.transactoin.TransactionProvider;
 
 public class TransactionalCommandBus implements CommandBus {
