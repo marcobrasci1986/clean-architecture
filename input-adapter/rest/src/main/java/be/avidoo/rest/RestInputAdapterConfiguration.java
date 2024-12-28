@@ -7,5 +7,5 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 @ComponentScan
 @EnableAutoConfiguration
-public class InputAdapterConfiguration {
+public class RestInputAdapterConfiguration {
 }
