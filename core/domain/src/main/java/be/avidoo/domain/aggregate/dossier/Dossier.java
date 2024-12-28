@@ -52,7 +52,7 @@ public class Dossier extends AggregateRoot<DossierId> implements DomainEventIden
     public static final class DossierBuilder {
         private Dossiernummer dossiernummer;
         private DossierStatus status;
-        private UUID id;
+        private DossierId id;
         private LocalDateTime datumCreatie;
         private LocalDateTime datumLaatsteWijziging;
 
@@ -70,7 +70,7 @@ public class Dossier extends AggregateRoot<DossierId> implements DomainEventIden
             return this;
         }
 
-        public DossierBuilder withId(UUID id) {
+        public DossierBuilder withId(DossierId id) {
             this.id = id;
             return this;
         }
@@ -86,7 +86,7 @@ public class Dossier extends AggregateRoot<DossierId> implements DomainEventIden
         }
 
         public Dossier build() {
-            return new Dossier(DossierId.dossierId(this.id), datumCreatie, datumLaatsteWijziging, dossiernummer, status);
+            return new Dossier(this.id, datumCreatie, datumLaatsteWijziging, dossiernummer, status);
         }
     }
 }

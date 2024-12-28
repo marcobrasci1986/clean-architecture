@@ -9,6 +9,10 @@ import be.avidoo.core.common.domainevents.DefaultDomainEventBus;
 import be.avidoo.core.common.domainevents.DomainEventBus;
 import be.avidoo.core.common.domainevents.DomainEventHandlerRegistry;
 import be.avidoo.core.common.domainevents.TransactionalDomainEventBus;
+import be.avidoo.core.common.query.DefaultQueryBus;
+import be.avidoo.core.common.query.QueryBus;
+import be.avidoo.core.common.query.QueryHandlerRegistry;
+import be.avidoo.core.common.query.TransactionalQueryBus;
 import be.avidoo.core.common.transactoin.TransactionProvider;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -26,7 +30,16 @@ public class UseCaseConfiguration {
             TransactionProvider transactionProvider
     ) {
         DefaultCommandBus commandBus = new DefaultCommandBus(commandHandlerRegistry);
-        return new TransactionalCommandBus(transactionProvider, commandBus);
+        return new TransactionalCommandBus(commandBus, transactionProvider);
+    }
+
+    @Bean
+    public QueryBus queryBus(
+            QueryHandlerRegistry queryHandlerRegistry,
+            TransactionProvider transactionProvider
+    ) {
+        DefaultQueryBus queryBus = new DefaultQueryBus(queryHandlerRegistry);
+        return new TransactionalQueryBus(queryBus, transactionProvider);
     }
 
     @Bean

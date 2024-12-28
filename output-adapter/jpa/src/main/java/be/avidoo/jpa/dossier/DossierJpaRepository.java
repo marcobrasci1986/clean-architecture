@@ -3,6 +3,7 @@ package be.avidoo.jpa.dossier;
 import be.avidoo.domain.aggregate.dossier.Dossier;
 import be.avidoo.domain.aggregate.dossier.DossierId;
 import be.avidoo.domain.aggregate.dossier.DossierStatus;
+import be.avidoo.domain.aggregate.dossier.Dossiernummer;
 import be.avidoo.outputport.DossierRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
@@ -38,7 +39,9 @@ public class DossierJpaRepository implements DossierRepository {
 
     private Dossier mapToDossier(DossierJpaEntity dossierJpaEntity) {
         return Dossier.builder()
-                .withId(dossierJpaEntity.getId())
+                .withId(DossierId.dossierId(dossierJpaEntity.getId()))
+                .withStatus(dossierJpaEntity.getStatus())
+                .withDossiernummer(Dossiernummer.dossiernummer(dossierJpaEntity.getDossiernummer()))
                 .withDatumCreatie(dossierJpaEntity.getDatumCreatie())
                 .withDatumLaatsteWijziging(dossierJpaEntity.getDatumLaatsteWijziging())
                 .build();

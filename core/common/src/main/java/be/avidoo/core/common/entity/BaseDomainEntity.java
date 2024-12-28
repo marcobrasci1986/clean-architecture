@@ -36,11 +36,11 @@ public class BaseDomainEntity<T extends EntityId> {
         return id;
     }
 
-    protected LocalDateTime getDatumCreatie() {
+    public LocalDateTime getDatumCreatie() {
         return datumCreatie;
     }
 
-    protected LocalDateTime getDatumLaatsteWijziging() {
+    public LocalDateTime getDatumLaatsteWijziging() {
         return datumLaatsteWijziging;
     }
 }

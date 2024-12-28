@@ -1,4 +1,4 @@
-package be.avidoo.usecase.dossier;
+package be.avidoo.usecase.dossier.command;
 
 import be.avidoo.core.command.AanmeldenDossierCommand;
 import be.avidoo.core.common.command.BaseCommandHandler;
@@ -33,7 +33,7 @@ public class DossierAanmeldenCommandHandler extends BaseCommandHandler<Dossier, 
         Faker faker = new Faker();
         LocalDateTime now = LocalDateTime.now();
         Dossier dossier = Dossier.builder()
-                .withId(UUID.randomUUID())
+                .withId(DossierId.dossierId(UUID.randomUUID()))
                 .withDossiernummer(Dossiernummer.dossiernummer(faker.number().digits(10)))
                 .withDatumCreatie(now)
                 .withDatumLaatsteWijziging(now)

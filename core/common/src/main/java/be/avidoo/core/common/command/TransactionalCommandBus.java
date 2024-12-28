@@ -6,9 +6,9 @@ public class TransactionalCommandBus implements CommandBus {
     private final TransactionProvider transactionProvider;
     private final CommandBus delegate;
 
-    public TransactionalCommandBus(TransactionProvider transactionProvider, CommandBus delegate) {
-        this.transactionProvider = transactionProvider;
+    public TransactionalCommandBus(CommandBus delegate, TransactionProvider transactionProvider) {
         this.delegate = delegate;
+        this.transactionProvider = transactionProvider;
     }
 
     @Override
