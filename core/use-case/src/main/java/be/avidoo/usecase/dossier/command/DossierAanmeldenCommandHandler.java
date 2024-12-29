@@ -17,7 +17,7 @@ import java.util.UUID;
 
 @Component
 @Slf4j
-public class DossierAanmeldenCommandHandler extends BaseCommandHandler<Dossier, AanmeldenDossierCommand, UUID> {
+class DossierAanmeldenCommandHandler extends BaseCommandHandler<Dossier, AanmeldenDossierCommand, UUID> {
 
     private final DossierRepository dossierRepository;
 

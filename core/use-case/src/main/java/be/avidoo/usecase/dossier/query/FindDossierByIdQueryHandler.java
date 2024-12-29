@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 @RequiredArgsConstructor
-public class FindDossierByIdQueryHandler
+class FindDossierByIdQueryHandler
         implements QueryHandler<FindDossierByIdQuery, FindDossierDetailsQueryDto> {
 
     private final DossierRepository dossierRepository;
