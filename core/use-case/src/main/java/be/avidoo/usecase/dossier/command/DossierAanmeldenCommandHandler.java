@@ -31,15 +31,15 @@ class DossierAanmeldenCommandHandler extends BaseCommandHandler<Dossier, Aanmeld
         AanmeldenDossierCommand command = commandMessage.getCommand();
 
         Faker faker = new Faker();
-        LocalDateTime now = LocalDateTime.now();
-        Dossier dossier = Dossier.builder()
-                .withId(DossierId.dossierId(UUID.randomUUID()))
-                .withDossiernummer(Dossiernummer.dossiernummer(faker.number().digits(10)))
-                .withDatumCreatie(now)
-                .withDatumLaatsteWijziging(now)
-                .build();
+        Dossier dossier = Dossier.create(
+                DossierId.dossierId(UUID.randomUUID()),
+                Dossiernummer.dossiernummer(faker.number().digits(10)),
+                LocalDateTime.now()
+        );
 
         DossierId dossierId = dossierRepository.save(dossier);
+
+        this.handleEvents(dossier);
         return dossierId.getValue();
     }
 
