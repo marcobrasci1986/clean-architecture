@@ -4,6 +4,7 @@ import be.avidoo.domain.aggregate.dossier.Dossier;
 import be.avidoo.domain.aggregate.dossier.DossierId;
 import be.avidoo.domain.aggregate.dossier.DossierStatus;
 import be.avidoo.domain.aggregate.dossier.Dossiernummer;
+import be.avidoo.domain.aggregate.dossier.Politiezone;
 import be.avidoo.domain.aggregate.dossier.PolitiezoneId;
 import be.avidoo.outputport.DossierRepository;
 import lombok.RequiredArgsConstructor;
@@ -49,10 +50,18 @@ public class DossierJpaRepository implements DossierRepository {
     }
 
     private Dossier mapToDossier(DossierJpaEntity dossierJpaEntity) {
+        Politiezone politiezone = Optional.ofNullable(dossierJpaEntity.getPolitiezone()).map(e -> {
+            return Politiezone.PolitiezoneBuilder.aPolitiezone()
+                    .withPolitiezoneId(PolitiezoneId.politiezoneId(e.getId()))
+                    .withZone(e.getZone())
+                    .build();
+        }).orElse(null);
+
         return Dossier.builder()
                 .withId(DossierId.dossierId(dossierJpaEntity.getId()))
                 .withStatus(dossierJpaEntity.getStatus())
                 .withDossiernummer(Dossiernummer.dossiernummer(dossierJpaEntity.getDossiernummer()))
+                .withPolitiezone(politiezone)
                 .withDatumCreatie(dossierJpaEntity.getDatumCreatie())
                 .withDatumLaatsteWijziging(dossierJpaEntity.getDatumLaatsteWijziging())
                 .build();
