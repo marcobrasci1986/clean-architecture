@@ -5,6 +5,8 @@ import be.avidoo.jpa.AggregateRootJpaEntity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Enumerated;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.AccessLevel;
 import lombok.Builder;
@@ -29,10 +31,18 @@ public class DossierJpaEntity extends AggregateRootJpaEntity {
     @Column(name = "dossiernummer")
     private String dossiernummer;
 
+    @OneToOne
+    @JoinColumn(name = "politiezone_id")
+    private PolitiezoneJpaEntity politiezone;
+
     @Builder
     public DossierJpaEntity(UUID id, LocalDateTime datumCreatie, LocalDateTime datumLaatsteWijziging, DossierStatus status, String dossiernummer) {
         super(id, datumCreatie, datumLaatsteWijziging);
         this.status = status;
         this.dossiernummer = dossiernummer;
+    }
+
+    public void setPolitiezone(PolitiezoneJpaEntity politiezone) {
+        this.politiezone = politiezone;
     }
 }

@@ -11,11 +11,32 @@ public class Dossier extends AggregateRoot<DossierId> implements DomainEventIden
 
     private final Dossiernummer dossiernummer;
     private final DossierStatus status;
+    private Politiezone politiezone;
 
-    public Dossier(DossierId id, LocalDateTime datumCreatie, LocalDateTime datumLaatsteWijziging, Dossiernummer dossiernummer, DossierStatus status) {
+    public Dossier(
+            DossierId id,
+            LocalDateTime datumCreatie,
+            LocalDateTime datumLaatsteWijziging,
+            Dossiernummer dossiernummer,
+            DossierStatus status
+    ) {
         super(id, datumCreatie, datumLaatsteWijziging);
         this.dossiernummer = dossiernummer;
         this.status = status;
+    }
+
+    public Dossier(
+            DossierId id,
+            LocalDateTime datumCreatie,
+            LocalDateTime datumLaatsteWijziging,
+            Dossiernummer dossiernummer,
+            DossierStatus status,
+            Politiezone politiezone
+    ) {
+        super(id, datumCreatie, datumLaatsteWijziging);
+        this.dossiernummer = dossiernummer;
+        this.status = status;
+        this.politiezone = politiezone;
     }
 
     public static Dossier create(
@@ -44,6 +65,14 @@ public class Dossier extends AggregateRoot<DossierId> implements DomainEventIden
         return status;
     }
 
+    public Politiezone getPolitiezone() {
+        return politiezone;
+    }
+
+    public void voegPolitiezoneToe(Politiezone politiezone) {
+        this.politiezone = politiezone;
+    }
+
 
     public static Dossier.DossierBuilder builder() {
         return new Dossier.DossierBuilder();
@@ -55,6 +84,7 @@ public class Dossier extends AggregateRoot<DossierId> implements DomainEventIden
         private DossierId id;
         private LocalDateTime datumCreatie;
         private LocalDateTime datumLaatsteWijziging;
+        private Politiezone politiezone;
 
         private DossierBuilder() {
         }
@@ -85,8 +115,13 @@ public class Dossier extends AggregateRoot<DossierId> implements DomainEventIden
             return this;
         }
 
+        public DossierBuilder withPolitiezone(Politiezone politiezone) {
+            this.politiezone = politiezone;
+            return this;
+        }
+
         public Dossier build() {
-            return new Dossier(this.id, datumCreatie, datumLaatsteWijziging, dossiernummer, status);
+            return new Dossier(this.id, datumCreatie, datumLaatsteWijziging, dossiernummer, status, politiezone);
         }
     }
 }

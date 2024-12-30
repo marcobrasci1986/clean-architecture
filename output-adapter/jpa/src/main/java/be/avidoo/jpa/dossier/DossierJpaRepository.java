@@ -4,6 +4,7 @@ import be.avidoo.domain.aggregate.dossier.Dossier;
 import be.avidoo.domain.aggregate.dossier.DossierId;
 import be.avidoo.domain.aggregate.dossier.DossierStatus;
 import be.avidoo.domain.aggregate.dossier.Dossiernummer;
+import be.avidoo.domain.aggregate.dossier.PolitiezoneId;
 import be.avidoo.outputport.DossierRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
@@ -16,6 +17,7 @@ import java.util.Optional;
 public class DossierJpaRepository implements DossierRepository {
 
     private final DossierSpringRepository repository;
+    private final PolitiezoneSpringRepository politiezoneSpringRepository;
 
     @Override
     public DossierId save(Dossier dossier) {
@@ -29,6 +31,15 @@ public class DossierJpaRepository implements DossierRepository {
 
         DossierJpaEntity savedDossierEntity = repository.save(dossierJpaEntity);
         return DossierId.dossierId(savedDossierEntity.getId());
+    }
+
+    @Override
+    public void updatePolitiezone(Dossier dossier, PolitiezoneId politiezoneId) {
+        DossierJpaEntity dossierJpaEntity = repository.findById(dossier.getId().getValue()).orElseThrow();
+        PolitiezoneJpaEntity politiezoneJpaEntity = politiezoneSpringRepository.findById(politiezoneId.getValue()).orElseThrow();
+
+        dossierJpaEntity.setPolitiezone(politiezoneJpaEntity);
+        repository.save(dossierJpaEntity);
     }
 
     @Override
@@ -46,5 +57,6 @@ public class DossierJpaRepository implements DossierRepository {
                 .withDatumLaatsteWijziging(dossierJpaEntity.getDatumLaatsteWijziging())
                 .build();
     }
+
 
 }

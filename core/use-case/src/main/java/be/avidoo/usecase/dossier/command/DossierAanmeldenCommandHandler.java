@@ -8,8 +8,8 @@ import be.avidoo.domain.aggregate.dossier.Dossier;
 import be.avidoo.domain.aggregate.dossier.DossierId;
 import be.avidoo.domain.aggregate.dossier.Dossiernummer;
 import be.avidoo.outputport.DossierRepository;
+import be.avidoo.usecase.util.RandomNumberGenerator;
 import lombok.extern.slf4j.Slf4j;
-import net.datafaker.Faker;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
@@ -30,10 +30,10 @@ class DossierAanmeldenCommandHandler extends BaseCommandHandler<Dossier, Aanmeld
     public UUID handle(CommandMessage<AanmeldenDossierCommand> commandMessage) {
         AanmeldenDossierCommand command = commandMessage.getCommand();
 
-        Faker faker = new Faker();
+
         Dossier dossier = Dossier.create(
                 DossierId.dossierId(UUID.randomUUID()),
-                Dossiernummer.dossiernummer(faker.number().digits(10)),
+                Dossiernummer.dossiernummer(RandomNumberGenerator.generateRandom10DigitNumber()),
                 LocalDateTime.now()
         );
 

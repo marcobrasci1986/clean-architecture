@@ -51,11 +51,6 @@
                 <version>1.18.34</version>
                 <scope>provided</scope>
             </dependency>
-            <dependency>
-                <groupId>net.datafaker</groupId>
-                <artifactId>datafaker</artifactId>
-                <version>2.4.2</version>
-            </dependency>
         </dependencies>
     </dependencyManagement>
 
@@ -66,7 +61,6 @@
         </dependency>
 
     </dependencies>
-
 
     <build>
         <plugins>

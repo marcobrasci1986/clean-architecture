@@ -7,4 +7,4 @@ TODO
 - Validation
     - Annotation based in commands / query
     - Domain validation
-- Domain events
+- Domain events -> Add test
