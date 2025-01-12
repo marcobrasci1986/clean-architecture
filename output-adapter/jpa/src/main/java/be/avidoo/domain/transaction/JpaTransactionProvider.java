@@ -1,5 +1,5 @@
 
-package be.avidoo.jpa.transaction;
+package be.avidoo.domain.transaction;
 
 import be.avidoo.core.common.transactoin.TransactionProvider;
 import org.springframework.stereotype.Component;

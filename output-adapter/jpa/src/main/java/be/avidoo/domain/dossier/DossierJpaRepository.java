@@ -1,7 +1,5 @@
-package be.avidoo.jpa.dossier;
+package be.avidoo.domain.dossier;
 
-import be.avidoo.domain.dossier.DossierAggregate;
-import be.avidoo.domain.dossier.DossierRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 

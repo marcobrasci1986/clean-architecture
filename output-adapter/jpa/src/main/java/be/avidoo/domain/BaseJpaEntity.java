@@ -1,4 +1,4 @@
-package be.avidoo.jpa;
+package be.avidoo.domain;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Id;

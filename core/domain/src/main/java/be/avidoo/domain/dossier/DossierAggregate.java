@@ -57,7 +57,7 @@ public class DossierAggregate extends AggregateRoot<DossierId> implements Domain
         return status.name();
     }
 
-    public static DossierAggregateBuilder builder() {
+    static DossierAggregateBuilder builder() {
         return new DossierAggregateBuilder();
     }
 

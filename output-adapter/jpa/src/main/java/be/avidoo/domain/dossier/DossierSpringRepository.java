@@ -1,4 +1,4 @@
-package be.avidoo.jpa.dossier;
+package be.avidoo.domain.dossier;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;

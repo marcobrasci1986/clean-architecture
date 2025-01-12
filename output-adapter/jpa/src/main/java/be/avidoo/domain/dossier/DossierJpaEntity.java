@@ -1,6 +1,6 @@
-package be.avidoo.jpa.dossier;
+package be.avidoo.domain.dossier;
 
-import be.avidoo.jpa.AggregateRootJpaEntity;
+import be.avidoo.domain.AggregateRootJpaEntity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;

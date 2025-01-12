@@ -1,6 +1,6 @@
 package be.avidoo.application;
 
-import be.avidoo.jpa.JpaOutputAdapterConfiguration;
+import be.avidoo.domain.JpaOutputAdapterConfiguration;
 import be.avidoo.rest.RestInputAdapterConfiguration;
 import be.avidoo.usecase.UseCaseConfiguration;
 import org.springframework.boot.SpringApplication;
