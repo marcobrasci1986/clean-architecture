@@ -1,4 +1,4 @@
-package be.avidoo.domain.aggregate.dossier.events;
+package be.avidoo.domain.be.avidoo.events.dossier;
 
 
 import be.avidoo.core.common.domainevents.model.CreatedDomainEvent;

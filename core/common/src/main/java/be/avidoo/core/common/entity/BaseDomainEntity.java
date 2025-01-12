@@ -2,10 +2,11 @@ package be.avidoo.core.common.entity;
 
 import java.time.LocalDateTime;
 import java.util.Objects;
+import java.util.UUID;
 
 public class BaseDomainEntity<T extends EntityId> {
 
-    private final T id;
+    protected final T id;
     private final LocalDateTime datumCreatie;
     private LocalDateTime datumLaatsteWijziging;
 
@@ -32,8 +33,8 @@ public class BaseDomainEntity<T extends EntityId> {
         this.datumLaatsteWijziging = datumWijziging;
     }
 
-    public T getId() {
-        return id;
+    public UUID getId() {
+        return id.getValue();
     }
 
     public LocalDateTime getDatumCreatie() {

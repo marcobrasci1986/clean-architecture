@@ -10,7 +10,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-class DossierControllerIT extends AbstractIT {
+class DossierAggregateControllerIT extends AbstractIT {
 
     @Autowired
     private MockMvc mockMvc;

@@ -1,5 +1,5 @@
-package be.avidoo.domain.aggregate.dossier;
+package be.avidoo.domain.dossier;
 
-public enum DossierStatus {
+enum DossierStatus {
     DOSSIEROPBOUW, DOSSIERVORMING, UITVOERING, AFGESLOTEN, GEMIGREERD
 }

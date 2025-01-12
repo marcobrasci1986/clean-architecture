@@ -1,4 +1,4 @@
-package be.avidoo.domain.aggregate.dossier;
+package be.avidoo.domain.dossier;
 
 import be.avidoo.core.common.domainevents.model.CreatedDomainEvent;
 import org.junit.jupiter.api.Test;
@@ -8,17 +8,17 @@ import java.util.UUID;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-class DossierTest {
+class DossierAggregateTest {
 
     @Test
     void createdDomainEvent() {
-        Dossier dossier = Dossier.create(
-                DossierId.dossierId(UUID.randomUUID()),
-                Dossiernummer.dossiernummer("ABC-100"),
+        DossierAggregate dossier = DossierAggregate.create(
+                UUID.randomUUID(),
+                "ABC-100",
                 LocalDateTime.now()
         );
 
-        assertThat(dossier.getStatus()).isEqualTo(DossierStatus.DOSSIEROPBOUW);
+        assertThat(dossier.getStatus()).isEqualTo(DossierStatus.DOSSIEROPBOUW.toString());
 
         // verify domain event
         assertThat(dossier.getEvents()).hasSize(1);

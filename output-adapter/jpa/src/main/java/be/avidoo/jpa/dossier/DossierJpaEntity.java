@@ -1,12 +1,8 @@
 package be.avidoo.jpa.dossier;
 
-import be.avidoo.domain.aggregate.dossier.DossierStatus;
 import be.avidoo.jpa.AggregateRootJpaEntity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.AccessLevel;
 import lombok.Builder;
@@ -16,8 +12,6 @@ import lombok.NoArgsConstructor;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
-import static jakarta.persistence.EnumType.STRING;
-
 @Entity
 @Table(name = "dossier")
 @Getter
@@ -25,24 +19,17 @@ import static jakarta.persistence.EnumType.STRING;
 public class DossierJpaEntity extends AggregateRootJpaEntity {
 
     @Column(name = "status")
-    @Enumerated(STRING)
-    private DossierStatus status;
+    private String status;
 
     @Column(name = "dossiernummer")
     private String dossiernummer;
 
-    @OneToOne
-    @JoinColumn(name = "politiezone_id")
-    private PolitiezoneJpaEntity politiezone;
 
     @Builder
-    public DossierJpaEntity(UUID id, LocalDateTime datumCreatie, LocalDateTime datumLaatsteWijziging, DossierStatus status, String dossiernummer) {
+    public DossierJpaEntity(UUID id, LocalDateTime datumCreatie, LocalDateTime datumLaatsteWijziging, String status, String dossiernummer) {
         super(id, datumCreatie, datumLaatsteWijziging);
         this.status = status;
         this.dossiernummer = dossiernummer;
     }
 
-    public void setPolitiezone(PolitiezoneJpaEntity politiezone) {
-        this.politiezone = politiezone;
-    }
 }

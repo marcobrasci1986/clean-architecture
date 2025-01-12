@@ -1,7 +1,7 @@
 package be.avidoo.usecase.dossier.eventhandlers;
 
 import be.avidoo.core.common.domainevents.DomainEventHandler;
-import be.avidoo.domain.aggregate.dossier.events.DossierCreatedDomainEvent;
+import be.avidoo.domain.be.avidoo.events.dossier.DossierCreatedDomainEvent;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
